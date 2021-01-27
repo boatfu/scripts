@@ -62,7 +62,7 @@ const venueInfo = {
     5: '#DFBB1B',
     6: '#F89D0A',
     7: '#F89D0A',
-};
+}
 // 注入venues
 let venueStr =
     'DELETE FROM `venues`; INSERT INTO `venues` (`id`, `name`, `color`) VALUES ';
@@ -194,17 +194,13 @@ for (const sheetName of reportBook.SheetNames) {
             };
         }
 
-        // lastI += 1;
-        // const reportId = lastI;
-        // const thesisId = lastI;
-        // const userId = lastI;
-        // const auther = name;
         reporterStr += `(${reportId}, ${thesisId}, ${userId}, '${auther}'),`;
         pdfStr += `(${reportId}, ${thesisId}, NULL, '/storage/pdfs/test.pdf', '${v[5]}'),`;
         thesisStr += `(${lastI},' ${v[0]}', '${auther}'),`;
     });
 }
-
+// admin
+str += `(${lastI + 1}, 'admin', 'admin@qq.com', '$2y$10$KnvCzXVH9xHKK1S54xEMVuCLJ2KEKcr24bthA12vMSgYHV.hULrTO', 'admin', '简介', '/storage/avatar/user.png', NULL, 'no', 'yes', 0, 0, NULL, '', NULL, NULL, NULL),`;
 const userStr = str.replace(/,$/, ';');
 reporterStr = reporterStr.replace(/,$/, ';');
 pdfStr = pdfStr.replace(/,$/, ';');
@@ -228,3 +224,4 @@ const result =
     scheduleStr;
 // const result = venueStr + meetingStr + reportStr;
 fs.writeFileSync('output.sql', result);
+// admin  $2y$10$KnvCzXVH9xHKK1S54xEMVuCLJ2KEKcr24bthA12vMSgYHV.hULrTO

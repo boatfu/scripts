@@ -1,3 +1,5 @@
+// 使用来自puppeteer团队, 由Google带头开发的playwright自动化测试工具
+// 充分利用Javascript的单线程并发优势和ES6的迭代器设计, 准确模拟用户操作, 实现自动化测试
 const playwright = require('playwright');
 (async () => {
     const browser = await playwright['chromium'].launch();
